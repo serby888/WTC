@@ -84,7 +84,9 @@ if (isset($_GET['id']) AND empty($_POST['date']) AND empty($_POST['date2']))
     if($result)
     {
         $rows = mysqli_num_rows($result); // количество полученных строк
-         echo '<table border="1" cellpadding="5" style="border-collapse: collapse;" bgcolor="#f5f5f5"><tr><th>Время</th><th>ID телефона</th></tr>';
+         echo '<table border="1" cellpadding="5" style="border-collapse: collapse;" bgcolor="#f5f5f5"><tr><th>Время</th><th>ID телефона</th></tr>
+         <col width="199">
+         <col width="101">';
         for ($i = 0 ; $i < $rows ; ++$i)
         {
             $row = mysqli_fetch_row($result);
