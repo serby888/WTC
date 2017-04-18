@@ -4,11 +4,6 @@
 <meta charset="utf-8">
 </head>
 <body>
-<style>
-    body{
-        background-image: url(124.jpg);
-    }
-</style>
 
 
 <?php

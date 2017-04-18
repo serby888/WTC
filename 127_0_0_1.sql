@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 17 2017 г., 13:42
+-- Время создания: Апр 18 2017 г., 10:41
 -- Версия сервера: 10.1.21-MariaDB
 -- Версия PHP: 5.6.30
 
@@ -30,7 +30,7 @@ USE `wtc`;
 
 CREATE TABLE `table_time` (
   `ID` int(5) NOT NULL,
-  `Время` datetime(6) NOT NULL,
+  `xTime` datetime(6) NOT NULL,
   `ID_phone` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -42,8 +42,8 @@ CREATE TABLE `table_time` (
 
 CREATE TABLE `table_user` (
   `ID` int(5) NOT NULL,
-  `ФИО` text COLLATE utf8_unicode_ci NOT NULL,
-  `Мобильный` int(15) NOT NULL,
+  `FIO` text COLLATE utf8_unicode_ci NOT NULL,
+  `Phone_number` int(15) NOT NULL,
   `MAC` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -64,7 +64,7 @@ ALTER TABLE `table_time`
 ALTER TABLE `table_user`
   ADD PRIMARY KEY (`ID`),
   ADD UNIQUE KEY `MAC` (`MAC`),
-  ADD UNIQUE KEY `Мобильный` (`Мобильный`);
+  ADD UNIQUE KEY `Мобильный` (`Phone_number`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц

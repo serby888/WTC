@@ -4,11 +4,6 @@
 <meta charset="utf-8">
 </head>
 <body>
-<style>
-    body{
-        background-image: url(124.jpg);
-    }
-</style>
 
 <?php
 require_once 'connection.php'; // подключаем скрипт
@@ -32,7 +27,7 @@ if(isset($_GET['edd']) != 0)
 if(isset($_POST['fio_edd']) AND isset($_POST['number_edd']) AND isset($_POST['mac_edd']))
 {
 
-    $query2= "UPDATE table_user SET ФИО='$_POST[fio_edd]', Мобильный='$_POST[number_edd]', MAC='$_POST[mac_edd]' WHERE ID='$_POST[id_edd]'";
+    $query2= "UPDATE table_user SET FIO='$_POST[fio_edd]', Phone_number='$_POST[number_edd]', MAC='$_POST[mac_edd]' WHERE ID='$_POST[id_edd]'";
     mysqli_query($link, $query2) or die("Ошибка " . mysqli_error($link));
     header("location: index.php");
     exit;

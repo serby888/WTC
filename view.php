@@ -8,11 +8,6 @@
 <link rel="stylesheet" href="date_input.css" type="text/css">
 </head>
 <body>
-<style>
-    body{
-        background-image: url(124.jpg);
-    }
-</style>
 
 <?php
 require_once 'connection.php'; // подключаем скрипт
@@ -20,7 +15,7 @@ require_once 'connection.php'; // подключаем скрипт
 $link = mysqli_connect($host, $user, $password, $database) 
     or die("Ошибка " . mysqli_error($link)); 
      
-$query ="SELECT ФИО, Мобильный, MAC FROM table_user WHERE ID = '$_GET[id]'";
+$query ="SELECT FIO, Phone_number, MAC FROM table_user WHERE ID = '$_GET[id]'";
  
 $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
 if($result)
@@ -61,7 +56,7 @@ if (!empty($_POST['date']) AND !empty($_POST['date2'])) {
     $value2 = $_POST['date2'];
     $value2 = "$value2 00:00:00.000000";
 
-    $queryTime = "SELECT * FROM table_time WHERE ((ID_phone = '$_GET[id]') AND (Время >= '$value') AND (Время <= '$value2'))" ;
+    $queryTime = "SELECT * FROM table_time WHERE ((ID_phone = '$_GET[id]') AND (xTime >= '$value') AND (xTime <= '$value2'))" ;
     $result = mysqli_query($link, $queryTime) or die("Ошибка " . mysqli_error($link)); 
 
     if($result)
