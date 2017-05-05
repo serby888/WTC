@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 18 2017 г., 10:41
+-- Время создания: Май 05 2017 г., 13:26
 -- Версия сервера: 10.1.21-MariaDB
 -- Версия PHP: 5.6.30
 
@@ -43,7 +43,7 @@ CREATE TABLE `table_time` (
 CREATE TABLE `table_user` (
   `ID` int(5) NOT NULL,
   `FIO` text COLLATE utf8_unicode_ci NOT NULL,
-  `Phone_number` int(15) NOT NULL,
+  `Phone_number` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `MAC` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

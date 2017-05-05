@@ -2,8 +2,17 @@
 <html>
 <head>
 <meta charset="utf-8">
+<script src="jquery.js" type="text/javascript"></script>
+<script src="jquery.maskedinput.js" type="text/javascript"></script>
 </head>
 <body>
+
+<script type="text/javascript">
+jQuery(function($){
+   $("#phone").mask("+375 (99) 999-99-99");
+   $("#mac").mask("**:**:**:**:**:**");
+});
+</script>
 
 <?php
 require_once 'connection.php'; // подключаем скрипт
@@ -19,8 +28,8 @@ if(isset($_GET['edd']) != 0)
     echo "<h2>Редактирование записи</h2><form action='edit.php' method='post' name='form_edd'>
     <input type='hidden' name='id_edd' value='".$row[0]."'>Введите ФИО:<br>
     <input type='text' size='30' name='fio_edd' value='".$row[1]."'><br><br>Введите телефонный номер:<br>
-    <input type='text' name='number_edd' value='".$row[2]."'><br><br>Введите MAC-адрес:<br>
-    <input type='text' name='mac_edd' value='".$row[3]."'><br><br>
+    <input type='text' id='phone' name='number_edd' value='".$row[2]."'><br><br>Введите MAC-адрес:<br>
+    <input type='text' id='mac' name='mac_edd' value='".$row[3]."'><br><br>
     <input type='submit' value='Сохранить'>
     </form>";
 }

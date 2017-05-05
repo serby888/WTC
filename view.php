@@ -40,9 +40,9 @@ C: <input type="text" name="date" class="date_input">
 По: <input type="text" name="date2" class="date_input">
 <br><br><input type="submit" style="height:35px; width:167px" value="Фильтр">
 
-<form action='view.php?id="$_GET[id]"'>
-<input type="submit" style="height:35px; width:167px" value="Сброс">
-</form>
+    <form action='view.php?id="$_GET[id]"'>
+    <input type="submit" style="height:35px; width:167px" value="Сброс">
+    </form>
 
 </p>
 </form>
