@@ -8,27 +8,17 @@
 <?php
 require_once 'connection.php'; // подключаем скрипт
 
+
+
 $link = mysqli_connect($host, $user, $password, $database) 
     or die("Ошибка " . mysqli_error($link)); 
      
 $query ="SELECT * FROM table_user ORDER BY FIO ASC";
  
-$markSearch;
+
     $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
     table($result);
 
-/*if (isset($_GET['sorting']))
-{    
-    $key = $_GET['sorting'];
-    switch ($key) {
-        case '1':
-            $query_sort1 = "SELECT * FROM table_user ORDER BY FIO DESC";
-            $result = mysqli_query($link, $query_sort1) or die("Ошибка " . mysqli_error($link));
-            //header("location: index.php");
-           // exit;
-            break;   
-    }
-}*/
 
 function table($result)
 {
@@ -64,7 +54,6 @@ function table($result)
         } 
     echo "</table>";      
      
-    // очищаем результат
     mysqli_free_result($result);
     }
 }
@@ -79,7 +68,7 @@ if(isset($_GET['del']))
     exit;
 }
 
-if($_GET['markSearch'] == 1)
+if(isset($_GET['markSearch']) && $_GET['markSearch'] == 1)
 {
     echo "<script>alert(\"Ваш поисковой запрос пуст\");
     document.location.href = 'index.php';
@@ -87,7 +76,7 @@ if($_GET['markSearch'] == 1)
 
 }
 
-if($_GET['markSearch'] == 2)
+if(isset($_GET['markSearch']) && $_GET['markSearch'] == 2)
 {
     echo "<script>alert(\"По Вашему поисковому запросу ничего не найдено\");
     document.location.href = 'index.php';

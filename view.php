@@ -56,30 +56,27 @@ if (!empty($_POST['date']) AND !empty($_POST['date2'])) {
     $value2 = $_POST['date2'];
     $value2 = "$value2 00:00:00.000000";
 
-    $queryTime = "SELECT * FROM table_time WHERE ((ID_phone = '$_GET[id]') AND (xTime >= '$value') AND (xTime <= '$value2'))" ;
+    $queryTime = "SELECT xTime FROM table_time WHERE ((ID_phone = '$_GET[id]') AND (xTime >= '$value') AND (xTime <= '$value2'))" ;
     $result = mysqli_query($link, $queryTime) or die("Ошибка " . mysqli_error($link)); 
-
-    if($result)
-    {
-        $rows = mysqli_num_rows($result); // количество полученных строк
-         echo '<table border="1" cellpadding="5" style="border-collapse: collapse;" bgcolor="#f5f5f5"><tr><th>Время</th></tr>
-        <col width="199">';
-        for ($i = 0 ; $i < $rows ; ++$i)
-        {
-            $row = mysqli_fetch_row($result);
-            echo "<tr>";
-                for ($j = 1 ; $j < 2 ; ++$j) echo "<td>$row[$j]</a></td>"; 
-            echo "</tr>";
-        }
-        echo "</table>";
-    }
+    timeControl($result);
+    
 }
 if (isset($_GET['id']) AND empty($_POST['date']) AND empty($_POST['date2']))
 {
 
-    $queryTime = "SELECT xTime FROM table_time WHERE ID_phone = '$_GET[id]'" ;
-    $result = mysqli_query($link, $queryTime) or die("Ошибка " . mysqli_error($link)); 
+    $today = date("Y-m-d"); 
+    $yesterday  = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d")-1, date("Y")));  
+    $tomorrow  = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d")+1, date("Y"))); 
 
+    $queryTime = "SELECT xTime FROM table_time WHERE ID_phone = '$_GET[id]' AND (xTime >= '$yesterday') AND (xTime <= '$tomorrow')" ;
+    $result = mysqli_query($link, $queryTime) or die("Ошибка " . mysqli_error($link)); 
+    timeControl($result);
+    
+}
+
+
+function timeControl($result)
+{
     if($result)
     {
         $rows = mysqli_num_rows($result); // количество полученных строк
@@ -125,6 +122,8 @@ if (isset($_GET['id']) AND empty($_POST['date']) AND empty($_POST['date2']))
     }
         echo "</table>";
 }
+
+
 
 ?>
 
