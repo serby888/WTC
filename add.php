@@ -15,7 +15,7 @@ jQuery(function($){
 </script>
 
 <?php
-
+session_start();
 require_once 'connection.php'; // подключаем скрипт 
    echo "<h2>Добавление записи</h2><form action='add.php' method='post' name='form_add'>
     <input type='hidden' name='id_add' '>Введите ФИО:<br>
@@ -46,7 +46,7 @@ if(!empty($_POST['fio_add']) AND !empty($_POST['number_add']) AND !empty($_POST[
             {
                 $query2= "INSERT INTO table_user (FIO, Phone_number, MAC) VALUES('$name', '$number', '$mac')";
                 mysqli_query($link, $query2) or die("Ошибка " . mysqli_error($link));
-                header("location: index.php");
+                header("location: index2.php");
                 exit;
                 mysqli_close($link);
             } 

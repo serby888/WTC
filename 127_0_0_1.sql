@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 05 2017 г., 13:26
+-- Время создания: Май 06 2017 г., 20:40
 -- Версия сервера: 10.1.21-MariaDB
 -- Версия PHP: 5.6.30
 
@@ -47,6 +47,18 @@ CREATE TABLE `table_user` (
   `MAC` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `login` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(15) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Индексы сохранённых таблиц
 --
@@ -67,6 +79,12 @@ ALTER TABLE `table_user`
   ADD UNIQUE KEY `Мобильный` (`Phone_number`);
 
 --
+-- Индексы таблицы `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
@@ -80,6 +98,11 @@ ALTER TABLE `table_time`
 --
 ALTER TABLE `table_user`
   MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT для таблицы `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --

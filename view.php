@@ -10,6 +10,7 @@
 <body>
 
 <?php
+session_start();
 require_once 'connection.php'; // подключаем скрипт
 
 $link = mysqli_connect($host, $user, $password, $database) 
@@ -28,7 +29,7 @@ if($result)
     mysqli_free_result($result);
     
 }
-    echo "<form action='index.php'>
+    echo "<form action='index2.php'>
     <input type='submit' style='height:35px; width:300px' value='Вернуться на главную страницу'>
     </form>";
 ?>
@@ -59,12 +60,11 @@ if (!empty($_POST['date']) AND !empty($_POST['date2'])) {
     $queryTime = "SELECT xTime FROM table_time WHERE ((ID_phone = '$_GET[id]') AND (xTime >= '$value') AND (xTime <= '$value2'))" ;
     $result = mysqli_query($link, $queryTime) or die("Ошибка " . mysqli_error($link)); 
     timeControl($result);
-    
+
 }
 if (isset($_GET['id']) AND empty($_POST['date']) AND empty($_POST['date2']))
 {
 
-    $today = date("Y-m-d"); 
     $yesterday  = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d")-1, date("Y")));  
     $tomorrow  = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d")+1, date("Y"))); 
 

@@ -1,91 +1,65 @@
-<!DOCTYPE html>
+<?php
+//  вся процедура работает на сессиях. Именно в ней хранятся данные  пользователя, пока он находится на сайте. Очень важно запустить их в  самом начале странички!!!
+session_start();
+    if(isset($_POST['submit2']))
+    {
+        session_destroy();
+        header("location:index.php");
+    }
+
+?>
 <html>
 <head>
-<meta charset="utf-8">
+<title>Вход в учетную запись</title>
 </head>
 <body>
-
-<?php
-require_once 'connection.php'; // подключаем скрипт
-
-
-
-$link = mysqli_connect($host, $user, $password, $database) 
-    or die("Ошибка " . mysqli_error($link)); 
-     
-$query ="SELECT * FROM table_user ORDER BY FIO ASC";
+<h2>Вход в учетную запись</h2>
+<form action="testreg.php" method="post">
+<!--****  testreg.php - это адрес обработчика. То есть, после нажатия на кнопку  "Войти", данные из полей отправятся на страничку testreg.php методом  "post" ***** -->
+  <p>
+    <label>Ваш логин:<br></label>
+    <input name="login" type="text" size="15" maxlength="15">
+  </p>
+<!--**** В текстовое поле (name="login" type="text") пользователь вводит свой логин ***** -->
  
+    <label>Ваш пароль:<br></label>
+    <input name="password3" type="password" size="15" maxlength="15">
+  </p>
+<!--**** В поле для паролей (name="password" type="password") пользователь вводит свой пароль ***** --> 
+<p>
+<input type="submit" name="submit" value="Войти">
+<!--**** Кнопочка (type="submit") отправляет данные на страничку testreg.php ***** --> 
+<br>
+<!--**** ссылка на регистрацию, ведь как-то же должны гости туда попадать ***** -->
+<a href="reg.php">Зарегистрироваться</a> 
+</p></form>
+<br>
+<?php
 
-    $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
-    table($result);
-
-
-function table($result)
+if(isset($_GET['err']) && $_GET['err'] == 1)
 {
-    if($result)
-    {
-        $rows = mysqli_num_rows($result); // количество полученных строк
-         echo '<table border="1" cellpadding="5" style="border-collapse: collapse; text-align:center;" bgcolor="#f5f5f5">
-         <col width="250">
-         <col width="200">
-         <col width="250">
-         <col width="100">
-         <tr><th> ФИО </a>
-         </th><th>Телефонный номер</th><th>MAC-адрес</th></tr>';
-
-            echo "<form action='/add.php'>
-            <input type='submit' style='height:35px; width:250px' value='Добавить новую запись'> &nbsp;
-            </form>";
-
-            echo "<form method='post' action='search.php?go'>
-            <input type='text' style='height:27px; width:250px' name='query' placeholder='Поиск'>
-            <input type='submit' name='submit' value='Найти' style='height:35px; width:100px'> 
-            </form><br><br>";
-
-        for ($i = 0 ; $i < $rows ; ++$i)
-        {
-            $row = mysqli_fetch_row($result);
-            echo "<tr>";
-                for ($j = 1 ; $j < 4 ; ++$j) echo "<td>$row[$j]</td>"; 
-                    echo "<td><a href='view.php?id=".$row[0]."'style='color:blue;'>Просмотр</a></td>"; 
-                    echo "<td><a href='edit.php?edd=".$row[0]."'style='color:blue;'>Редактировать</a></td>";
-                    echo "<td><a href='index.php?del=".$row[0]."' style='text-decoration: none;'><font size='5' color='red'>&#10006;</font></a></td>";
-            echo "</tr>";
-        } 
-    echo "</table>";      
-     
-    mysqli_free_result($result);
-    }
-}
-
-
-if(isset($_GET['del']))
-{
-
-    $query3= "DELETE FROM table_user WHERE ID='$_GET[del]'";
-    mysqli_query($link, $query3) or die("Ошибка " . mysqli_error($link));
-    header("location: index.php");
-    exit;
-}
-
-if(isset($_GET['markSearch']) && $_GET['markSearch'] == 1)
-{
-    echo "<script>alert(\"Ваш поисковой запрос пуст\");
+    echo "<script>alert(\"Одно из полей не заполено \");
     document.location.href = 'index.php';
     </script>";
 
 }
 
-if(isset($_GET['markSearch']) && $_GET['markSearch'] == 2)
+if(isset($_GET['err']) && $_GET['err'] == 2)
 {
-    echo "<script>alert(\"По Вашему поисковому запросу ничего не найдено\");
+    echo "<script>alert(\"Неверный логин или пароль \");
     document.location.href = 'index.php';
     </script>";
 
 }
 
+if(isset($_GET['err']) && $_GET['err'] == 3)
+{
+    echo "<script>alert(\"Неверный пароль \");
+    document.location.href = 'index.php';
+    </script>";
 
-mysqli_close($link);
+}
+
 ?>
 </body>
 </html>

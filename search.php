@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once 'connection.php';
 $_GET['markSearch'] = 0;
 
@@ -23,13 +23,13 @@ if(isset($_POST['submit']))
         
         if ($rows == 0) 
         { 
-            header("location: index.php?markSearch=2");
+            header("location: index2.php?markSearch=2");
         exit; 
         }
       } 
       else
       { 
-        header("location: index.php?markSearch=1");
+        header("location: index2.php?markSearch=1");
         exit; 
       } 
     } 
@@ -56,7 +56,7 @@ function table($result)
                 for ($j = 1 ; $j < 4 ; ++$j) echo "<td>$row[$j]</td>"; 
                     echo "<td><a href='view.php?id=".$row[0]."'style='color:blue;'>Просмотр</a></td>"; 
                     echo "<td><a href='edit.php?edd=".$row[0]."'style='color:blue;'>Редактировать</a></td>";
-                    echo "<td><a href='index.php?del=".$row[0]."' style='text-decoration: none;'><font size='5' color='red'>&#10006;</font></a></td>";
+                    echo "<td><a href='index2.php?del=".$row[0]."' style='text-decoration: none;'><font size='5' color='red'>&#10006;</font></a></td>";
             echo "</tr>";
         } 
     echo "</table>";      
@@ -67,6 +67,6 @@ function table($result)
 }
 ?>
 <br>
-<form action='index.php'>
+<form action='index2.php'>
 <input type='submit' style='height:35px; width:300px' value='Вернуться на главную страницу'>
 </form>

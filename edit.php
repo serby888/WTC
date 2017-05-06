@@ -15,6 +15,7 @@ jQuery(function($){
 </script>
 
 <?php
+session_start();
 require_once 'connection.php'; // подключаем скрипт
 
 $link = mysqli_connect($host, $user, $password, $database) 
@@ -38,7 +39,7 @@ if(isset($_POST['fio_edd']) AND isset($_POST['number_edd']) AND isset($_POST['ma
 
     $query2= "UPDATE table_user SET FIO='$_POST[fio_edd]', Phone_number='$_POST[number_edd]', MAC='$_POST[mac_edd]' WHERE ID='$_POST[id_edd]'";
     mysqli_query($link, $query2) or die("Ошибка " . mysqli_error($link));
-    header("location: index.php");
+    header("location: index2.php");
     exit;
 }
 ?>
