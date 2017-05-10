@@ -11,53 +11,70 @@ session_start();
 <html>
 <head>
 <title>Вход в учетную запись</title>
+<link href="style.css" media="screen" rel="stylesheet">
 </head>
 <body>
-<h2>Вход в учетную запись</h2>
+
+<div class="container mlogin">
+<div id="login">
+
+<h1>Вход</h1>
 <form action="testreg.php" method="post">
 <!--****  testreg.php - это адрес обработчика. То есть, после нажатия на кнопку  "Войти", данные из полей отправятся на страничку testreg.php методом  "post" ***** -->
   <p>
     <label>Ваш логин:<br></label>
-    <input name="login" type="text" size="15" maxlength="15">
+    <input class="input" name="login" type="text" size="15" maxlength="15">
   </p>
 <!--**** В текстовое поле (name="login" type="text") пользователь вводит свой логин ***** -->
- 
+   <p>
     <label>Ваш пароль:<br></label>
-    <input name="password3" type="password" size="15" maxlength="15">
+    <input class="input" name="password3" type="password" size="15" maxlength="15">
   </p>
 <!--**** В поле для паролей (name="password" type="password") пользователь вводит свой пароль ***** --> 
 <p>
-<input type="submit" name="submit" value="Войти">
+<input class="button" type="submit" name="submit" value="Войти">
 <!--**** Кнопочка (type="submit") отправляет данные на страничку testreg.php ***** --> 
-<br>
 <!--**** ссылка на регистрацию, ведь как-то же должны гости туда попадать ***** -->
 <a href="reg.php">Зарегистрироваться</a> 
 </p></form>
 <br>
+</div></div>
 <?php
 
 if(isset($_GET['err']) && $_GET['err'] == 1)
 {
-    echo "<script>alert(\"Одно из полей не заполено \");
-    document.location.href = 'index.php';
-    </script>";
-
+    echo "<div id='parent_popup'>
+            <div id='popup'>
+                <form action = 'index.php'>
+                <p> <input class='button' type='submit' value='Закрыть'></p>
+                <p>Заполнены не все поля</p>
+                </form>
+            </div>
+          </div>";
 }
 
 if(isset($_GET['err']) && $_GET['err'] == 2)
 {
-    echo "<script>alert(\"Неверный логин или пароль \");
-    document.location.href = 'index.php';
-    </script>";
-
+        echo "<div id='parent_popup'>
+            <div id='popup'>
+                <form action = 'index.php'>
+                <p> <input class='button' type='submit' value='Закрыть'></p>
+                <p>Неверный логин или пароль</p>
+                </form>
+            </div>
+          </div>";
 }
 
 if(isset($_GET['err']) && $_GET['err'] == 3)
 {
-    echo "<script>alert(\"Неверный пароль \");
-    document.location.href = 'index.php';
-    </script>";
-
+            echo "<div id='parent_popup'>
+            <div id='popup'>
+                <form action = 'index.php'>
+                <p> <input class='button' type='submit' value='Закрыть'></p>
+                <p>Неверный пароль</p>
+                </form>
+            </div>
+          </div>";
 }
 
 ?>

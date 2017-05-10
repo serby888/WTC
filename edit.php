@@ -2,6 +2,8 @@
 <html>
 <head>
 <meta charset="utf-8">
+<title> Редактирование записи</title>
+<link href="styleAdd.css" media="screen" rel="stylesheet">
 <script src="jquery.js" type="text/javascript"></script>
 <script src="jquery.maskedinput.js" type="text/javascript"></script>
 </head>
@@ -13,7 +15,7 @@ jQuery(function($){
    $("#mac").mask("**:**:**:**:**:**");
 });
 </script>
-
+<div id="region" align="center">
 <?php
 session_start();
 require_once 'connection.php'; // подключаем скрипт
@@ -26,13 +28,14 @@ if(isset($_GET['edd']) != 0)
     $result = mysqli_query($link, $query1) or die("Ошибка " . mysqli_error($link)); 
 
     $row = mysqli_fetch_array($result);
-    echo "<h2>Редактирование записи</h2><form action='edit.php' method='post' name='form_edd'>
-    <input type='hidden' name='id_edd' value='".$row[0]."'>Введите ФИО:<br>
-    <input type='text' size='30' name='fio_edd' value='".$row[1]."'><br><br>Введите телефонный номер:<br>
-    <input type='text' id='phone' name='number_edd' value='".$row[2]."'><br><br>Введите MAC-адрес:<br>
-    <input type='text' id='mac' name='mac_edd' value='".$row[3]."'><br><br>
-    <input type='submit' value='Сохранить'>
-    </form>";
+    echo "<h2>Редактирование записи</h2>
+                <form action='edit.php' method='post' name='form_edd'>
+                    <input type='hidden' name='id_edd' value='".$row[0]."'>Введите ФИО:<br>
+                    <input class='input' type='text' size='15' name='fio_edd' value='".$row[1]."'><br><br>Введите телефонный номер:<br>
+                    <input class='input' type='text' size='15' id='phone' name='number_edd' value='".$row[2]."'><br><br>Введите MAC-адрес:<br>
+                    <input class='input' type='text' size='15' id='mac' name='mac_edd' value='".$row[3]."'><br><br>
+                    <input class='button' type='submit' value='Сохранить'>
+                </form>";
 }
 if(isset($_POST['fio_edd']) AND isset($_POST['number_edd']) AND isset($_POST['mac_edd']))
 {
@@ -43,5 +46,6 @@ if(isset($_POST['fio_edd']) AND isset($_POST['number_edd']) AND isset($_POST['ma
     exit;
 }
 ?>
+</div>
 </body>
 </html>

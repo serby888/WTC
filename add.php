@@ -2,6 +2,8 @@
 <html>
 <head>
 <meta charset="utf-8">
+<title> Добавление записи</title>
+<link href="styleAdd.css" media="screen" rel="stylesheet">
 <script src="jquery.js" type="text/javascript"></script>
 <script src="jquery.maskedinput.js" type="text/javascript"></script>
 </head>
@@ -13,17 +15,20 @@ jQuery(function($){
    $("#mac").mask("**:**:**:**:**:**");
 });
 </script>
-
+<div id="region" align="center">
 <?php
 session_start();
 require_once 'connection.php'; // подключаем скрипт 
-   echo "<h2>Добавление записи</h2><form action='add.php' method='post' name='form_add'>
-    <input type='hidden' name='id_add' '>Введите ФИО:<br>
-    <input type='text' size='30' placeholder='Фамилия Имя Отчество' name='fio_add' ><br><br>Введите телефонный номер:<br>
-    <input type='text' id='phone' name='number_add' placeholder='+375 (__) ___-__-__' ><br><br>Введите MAC-адрес:<br>
-    <input type='text' id='mac' placeholder='__:__:__:__:__:__' name='mac_add' ><br><br>
-    <input type='submit' value='Добавить'>
-    </form>";
+   echo "
+            <h2>Добавление записи</h2>
+            <form action='add.php' method='post' name='form_add'>
+                <input type='hidden' name='id_add' >Введите ФИО:<br>
+                <input class='input' type='text' size='20' placeholder='Фамилия Имя Отчество' name='fio_add' ><br><br>Введите телефонный номер:<br>
+                <input class='input' type='text' size='15' id='phone' name='number_add' placeholder='+375 (__) ___-__-__' ><br><br>Введите MAC-адрес:<br>
+                <input class='input' type='text' size='15' id='mac' placeholder='__:__:__:__:__:__' name='mac_add' ><br><br>
+                <input class='button' type='submit' value='Добавить'>
+            </form>
+            ";
 
 if(!empty($_POST['fio_add']) AND !empty($_POST['number_add']) AND !empty($_POST['mac_add']))
 {
@@ -35,7 +40,15 @@ if(!empty($_POST['fio_add']) AND !empty($_POST['number_add']) AND !empty($_POST[
     $name = mb_convert_case($name, MB_CASE_TITLE, "UTF-8"); 
 
     if(preg_match('~[^а-яА-ЯёЁ ]~u', $name)) {
-        echo "<br><font color='red'>ФИО введено не корректно</font>";
+ 
+        echo "<div id='parent_popup'>
+                    <div id='popup'>
+                        <form action = 'add.php'>
+                        <p> <input class='button' type='submit' value='Закрыть'></p>
+                        <p>ФИО введено не корректно</p>
+                </form>
+            </div>
+          </div>";
     }
     else{
             $number = htmlentities(mysqli_real_escape_string($link, $_POST['number_add']));
@@ -52,11 +65,19 @@ if(!empty($_POST['fio_add']) AND !empty($_POST['number_add']) AND !empty($_POST[
             } 
             else 
             {
-                echo "<br><font color='red'>MAC-адрес введен не корректно</font>";
+                echo "<div id='parent_popup'>
+                    <div id='popup'>
+                        <form action = 'add.php'>
+                        <p> <input class='button' type='submit' value='Закрыть'></p>
+                        <p>MAC-адрес введен не корректно</p>
+                </form>
+            </div>
+          </div>";
             }
         }
 }
 
 ?>
+</div>
 </body>
 </html>

@@ -6,9 +6,11 @@
 <script type="text/javascript" src="jquery.date_input.js"></script>
 <script type="text/javascript">$($.date_input.initialize);</script>
 <link rel="stylesheet" href="date_input.css" type="text/css">
+    <title>Просмотр записи</title>
+    <link href="style2.css" media="screen" rel="stylesheet">
 </head>
 <body>
-
+<div id="region" align="center">
 <?php
 session_start();
 require_once 'connection.php'; // подключаем скрипт
@@ -22,32 +24,31 @@ $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($lin
 if($result)
 {
     $row = mysqli_fetch_row($result);
-    echo "<h2>$row[0]</h2><br>
-    <font size='4'>Телефонный номер: $row[1]</font><br>
-    <font size='4'>MAC-адрес: $row[2]</font><br><br>";
+    echo "<div id='rectangle'>
+            <h2>$row[0]</h2>
+            <font size='4'>Телефонный номер: $row[1]</font>
+            <font size='4'>MAC-адрес: $row[2]</font>
+        </div>";
 
     mysqli_free_result($result);
     
 }
-    echo "<form action='index2.php'>
-    <input type='submit' style='height:35px; width:300px' value='Вернуться на главную страницу'>
-    </form>";
-?>
 
+?>
+<div >
 <form action="#" method="post">
 <p>
-Вывести записи<br>
-C: <input type="text" name="date" class="date_input">
-По: <input type="text" name="date2" class="date_input">
-<br><br><input type="submit" style="height:35px; width:167px" value="Фильтр">
+<font size="4">Вывести записи</font><br><br>
+C: <input  type="text" name="date" class="date_input input">
+По: <input  type="text" name="date2" class="date_input input">
+<br><br><input class="button2" type="submit" style="height:35px; width:167px" value="Фильтр">
 
     <form action='view.php?id="$_GET[id]"'>
-    <input type="submit" style="height:35px; width:167px" value="Сброс">
+    <input class="button3" type="submit" style="height:35px; width:167px" value="Сброс">
     </form>
-
 </p>
 </form>
-
+</div>
 <?php
 if (!empty($_POST['date']) AND !empty($_POST['date2'])) {
     
@@ -80,7 +81,7 @@ function timeControl($result)
     if($result)
     {
         $rows = mysqli_num_rows($result); // количество полученных строк
-        echo '<table border="1" cellpadding="5" style="border-collapse: collapse;" bgcolor="#f5f5f5"><tr><th>Время</th></tr>
+        echo '<br><table align= "center" border="1" cellpadding="5" style="border-collapse: collapse; text-align:center;" bgcolor="#f5f5f5"><tr><th>Время</th></tr>
         <col width="199">';
 
         $row = mysqli_fetch_row($result); 
@@ -120,11 +121,13 @@ function timeControl($result)
         }
            
     }
-        echo "</table>";
+        echo "</table><br>";
 }
 
 
-
+    echo "</div><form action='index2.php'>
+    <input class='button1' type='submit' value='Вернуться на главную страницу'>
+    </form>";
 ?>
 
 

@@ -1,0 +1,230 @@
+/*= GENERAL STYLES
+--------------------------------------------------------*/
+body {
+   background: #efefef;
+   font-family: 'Century Gothic', sans-serif;
+   color: #777;
+    }
+
+a {
+    color: #f58220;
+    font-weight: 400;
+    margin: auto 0 -40px;
+}
+
+table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    text-align: left;
+    border-collapse: separate;  
+    border-spacing: 5px;
+    background: #F5F2F7;
+    color: #656665;
+    border: 10px solid #F5F2F7;
+    border-radius: 20px;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+}
+
+th {
+    font-size: 18px;
+    padding: 10px;
+}
+
+td {
+    background: #FAE3D0;
+    padding: 10px;
+}
+
+.mlogin {
+    margin: 135px auto 0;
+}
+
+.madd {
+    margin: 80px auto 0;
+    }
+
+#parent_popup {
+  background: #000;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+  left: 0;
+
+}
+#popup { 
+    background-color: #fff; 
+    position: relative; 
+    margin: auto; 
+    height: 65px; 
+    top: 230px; 
+    padding: 40px; 
+    color: #000; 
+    width: 500px; 
+    text-align: left; 
+}
+
+
+/*= CONTAINERS
+--------------------------------------------------------*/
+.container {
+    padding: 25px 16px 25px 10px;
+    font-weight: 400;
+    overflow: hidden;
+    width: 400px;
+    height: 280px;
+    background: #fff;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+    box-shadow: 0 1px 3px rgba(0,0,0,.13);
+}
+
+
+.container h1 {
+    color: #777;
+    text-align: center;
+    font-weight: 300;   
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.input {
+    background: #fbfbfb;
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 20px;
+    line-height: 1.25;
+    width: 100%;
+    padding: 3px;
+    margin: 0 6px 5px 0;
+    outline: none;
+    border: 1px solid #d9d9d9;
+}
+.container label {
+    color: #777;
+    font-size: 17px;
+}
+
+#login {
+    width: 320px;
+    margin: auto;
+    padding-bottom: 15px;
+}
+#rectangle {
+    position: relative;
+
+    width: 60%;
+    height: 66px;
+    background: #F5F2F7;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+}
+#butAdd {
+    position: absolute;
+    left: 5%;
+    
+}
+#searAdd {
+    position: absolute;
+    left: 50%;
+    
+}
+#rectangle1 {
+    position: absolute;
+    right: 10px;
+    width: 20%;
+    height: 7%;
+    background: #F5F2F7;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+    padding: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+}
+    
+
+.container form .input,.container input[type=text],.container input[type=password],.container input[type=e] {
+    background: #fbfbfb;
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 20px;
+    line-height: 1.25;
+    width: 100%;
+    padding: 3px;
+    margin: 0 6px 5px 0;
+    outline: none;
+    border: 1px solid #d9d9d9;
+}
+
+.container form .input:focus {
+    border: 1px solid #f58220;
+    -webkit-box-shadow: 0 0 3px 0 rgba(245,130,32,0.75);
+    -moz-box-shadow: 0 0 3px 0 rgba(245,130,32,0.75);
+    box-shadow: 0 0 3px 0 rgba(245,130,32,0.75);
+}
+
+
+.button {
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 15px;
+  color: #fff; /* цвет текста */
+  text-decoration: none; /* убирать подчёркивание у ссылок */
+  user-select: none; /* убирать выделение текста */
+  background: rgb(215, 143, 81); /* фон кнопки */
+  padding: .7em 1.5em; /* отступ от текста */
+  border: 0; /* убирать контур в Mozilla */
+  padding: 8px 30px;
+  float: right;
+
+
+} 
+.button:hover { background: rgb(195,123,71); } /* при наведении курсора мышки */
+.button:active { background: rgb(125,53,1); } /* при нажатии */
+
+.button2 {
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 15px;
+  color: #fff; /* цвет текста */
+  text-decoration: none; /* убирать подчёркивание у ссылок */
+  user-select: none; /* убирать выделение текста */
+  background: rgb(49, 126, 130); /* фон кнопки */
+  padding: .7em 1.5em; /* отступ от текста */
+  border: 0; /* убирать контур в Mozilla */
+  padding: 8px 30px;
+  float: right;
+
+
+} 
+.button2:hover { background: rgb(29,106,110); } /* при наведении курсора мышки */
+.button2:active { background: rgb(9,86,90); } /* при нажатии */
+
+
+.button3 {
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 15px;
+  color: #fff; /* цвет текста */
+  text-decoration: none; /* убирать подчёркивание у ссылок */
+  user-select: none; /* убирать выделение текста */
+  background: rgb(143, 31, 28); /* фон кнопки */
+  padding: .7em 1.5em; /* отступ от текста */
+  border: 0; /* убирать контур в Mozilla */
+  padding: 8px 30px;
+  float: right;
+
+
+} 
+.button3:hover { background: rgb(123,11, 8); } /* при наведении курсора мышки */
+.button3:active { background: rgb(103,11,8); } /* при нажатии */
+
+/*= FOOTER
+--------------------------------------------------------*//*
+footer {
+    color: #777;
+    text-align: center;
+    margin-top: 20px;
+}*/

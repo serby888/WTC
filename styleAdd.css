@@ -1,0 +1,82 @@
+html {
+  height: 100%;
+}
+body {
+   background: #06324F;
+   font-family: 'Century Gothic', sans-serif;
+   color: #777;
+   margin: 0 auto;
+   height: 100%;
+    }
+
+#region {
+
+    display: inline-flex;
+    flex-direction: column;
+    justify-content:center;
+    background: #efefef;
+    margin: 0 25%;
+    width: 50%;
+    height: 100%;
+ 
+}
+
+
+#parent_popup {
+  background: #000;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+  left: 0;
+
+}
+#popup { 
+    background-color: #fff; 
+    position: relative; 
+    margin: auto; 
+    height: 65px; 
+    top: 230px; 
+    padding: 40px; 
+    color: #000; 
+    width: 500px; 
+    text-align: left; 
+}
+
+.input {
+    background: #fbfbfb;
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 20px;
+    line-height: 1.25;
+    width: 50%;
+    padding: 3px;
+    outline: none;
+    border: 1px solid #d9d9d9;
+}
+
+.input:focus {
+    border: 1px solid #f58220;
+    -webkit-box-shadow: 0 0 3px 0 rgba(245,130,32,0.75);
+    -moz-box-shadow: 0 0 3px 0 rgba(245,130,32,0.75);
+    box-shadow: 0 0 3px 0 rgba(245,130,32,0.75);
+}
+
+
+ 
+.button {
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 15px;
+  color: #fff; /* цвет текста */
+  text-decoration: none; /* убирать подчёркивание у ссылок */
+  user-select: none; /* убирать выделение текста */
+  background: rgb(215, 143, 81); /* фон кнопки */
+  padding: .7em 1.5em; /* отступ от текста */
+  border: 0; /* убирать контур в Mozilla */
+  padding: 8px 30px;
+
+
+} 
+.button:hover { background: rgb(195,123,71); } /* при наведении курсора мышки */
+.button:active { background: rgb(125,53,1); } /* при нажатии */

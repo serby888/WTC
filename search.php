@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <title>Результат поиска</title>
+    <link href="style.css" media="screen" rel="stylesheet">
+</head>
+<body>
+
+
+
 <?php
 session_start();
 require_once 'connection.php';
@@ -41,22 +52,23 @@ function table($result)
     if($result)
     {
         $rows = mysqli_num_rows($result); // количество полученных строк
-         echo '<table border="1" cellpadding="5" style="border-collapse: collapse; text-align:center;" bgcolor="#f5f5f5">
-         <col width="250">
-         <col width="200">
-         <col width="250">
-         <col width="100">
-         <tr><th> ФИО </a>
-         </th><th>Телефонный номер</th><th>MAC-адрес</th></tr>';
+         echo '<table align= "center"  style=" text-align:center;" bgcolor="#ffffff">
+                     <col width="300">
+                     <col width="200">
+                     <col width="200">
+                     <col width="100">
+                     <tr><th>ФИО</th>
+                     <th>Телефонный номер</th>
+                     <th>MAC-адрес</th></tr>';
         
         for ($i = 0 ; $i < $rows ; ++$i)
         {
             $row = mysqli_fetch_row($result);
             echo "<tr>";
                 for ($j = 1 ; $j < 4 ; ++$j) echo "<td>$row[$j]</td>"; 
-                    echo "<td><a href='view.php?id=".$row[0]."'style='color:blue;'>Просмотр</a></td>"; 
-                    echo "<td><a href='edit.php?edd=".$row[0]."'style='color:blue;'>Редактировать</a></td>";
-                    echo "<td><a href='index2.php?del=".$row[0]."' style='text-decoration: none;'><font size='5' color='red'>&#10006;</font></a></td>";
+                    echo "<td><a href='view.php?id=".$row[0]."'style='color:#9F693E; text-decoration: none;'>Просмотр</a></td>"; 
+                    echo "<td><a href='edit.php?edd=".$row[0]."'style='color:#9F693E; text-decoration: none;'>Редактировать</a></td>";
+                    echo "<td><a href='index2.php?del=".$row[0]."' style='text-decoration: none;'><font size='5' color='#A11410'>&#10006;</font></a></td>";
             echo "</tr>";
         } 
     echo "</table>";      
@@ -67,6 +79,8 @@ function table($result)
 }
 ?>
 <br>
-<form action='index2.php'>
-<input type='submit' style='height:35px; width:300px' value='Вернуться на главную страницу'>
-</form>
+    <form action='index2.php'>
+        <input class='button' type='submit' value='Вернуться на главную страницу'>
+    </form>
+</body>
+</html>
