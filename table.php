@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Таблица работников</title>
-<link href="style.css" media="screen" rel="stylesheet">
+<link href="css/style.css" media="screen" rel="stylesheet">
 
 </head>
 <body>
@@ -64,7 +64,7 @@ function table($result)
                 for ($j = 1 ; $j < 4 ; ++$j) echo "<td>$row[$j]</td>"; 
                     echo "<td><a href='view.php?id=".$row[0]."'style='color:#9F693E; text-decoration: none;'>Просмотр</a></td>"; 
                     echo "<td><a href='edit.php?edd=".$row[0]."'style='color:#9F693E; text-decoration: none;'>Редактировать</a></td>";
-                    echo "<td><a href='index2.php?del=".$row[0]."' style='text-decoration: none;'><font size='5' color='#8F1F1C'>&#10006;</font></a></td>";
+                    echo "<td><a href='table.php?del=".$row[0]."' style='text-decoration: none;'><font size='5' color='#8F1F1C'>&#10006;</font></a></td>";
             echo "</tr>";
         } 
     echo "</table>";      
@@ -79,7 +79,7 @@ if(isset($_GET['del']))
 
     $query3= "DELETE FROM table_user WHERE ID='$_GET[del]'";
     mysqli_query($link, $query3) or die("Ошибка " . mysqli_error($link));
-    header("location: index2.php");
+    header("location: table.php");
     exit;
 }
 
@@ -87,7 +87,7 @@ if(isset($_GET['markSearch']) && $_GET['markSearch'] == 1)
 {
     echo "<div id='parent_popup'>
             <div id='popup'>
-                <form action = 'index2.php'>
+                <form action = 'table.php'>
                 <p> <input class='button' type='submit' value='Закрыть'></p>
                 <p>Ваш поисковой запрос пуст</p>
                 </form>
@@ -101,7 +101,7 @@ if(isset($_GET['markSearch']) && $_GET['markSearch'] == 2)
 {
     echo "<div id='parent_popup'>
             <div id='popup'>
-                <form action = 'index2.php'>
+                <form action = 'table.php'>
                 <p> <input class='button' type='submit' value='Закрыть'></p>
                 <p>По Вашему поисковому запросу ничего не найдено</p>
                 </form>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title> Добавление записи</title>
-<link href="styleAdd.css" media="screen" rel="stylesheet">
+<link href="css/styleAdd.css" media="screen" rel="stylesheet">
 <script src="jquery.js" type="text/javascript"></script>
 <script src="jquery.maskedinput.js" type="text/javascript"></script>
 </head>
@@ -59,7 +59,7 @@ if(!empty($_POST['fio_add']) AND !empty($_POST['number_add']) AND !empty($_POST[
             {
                 $query2= "INSERT INTO table_user (FIO, Phone_number, MAC) VALUES('$name', '$number', '$mac')";
                 mysqli_query($link, $query2) or die("Ошибка " . mysqli_error($link));
-                header("location: index2.php");
+                header("location: table.php");
                 exit;
                 mysqli_close($link);
             } 

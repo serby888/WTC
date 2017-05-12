@@ -5,9 +5,9 @@
 <script type="text/javascript" src="jquery.min.js"></script>
 <script type="text/javascript" src="jquery.date_input.js"></script>
 <script type="text/javascript">$($.date_input.initialize);</script>
-<link rel="stylesheet" href="date_input.css" type="text/css">
+<link rel="stylesheet" href="css/date_input.css" type="text/css">
     <title>Просмотр записи</title>
-    <link href="style2.css" media="screen" rel="stylesheet">
+    <link href="css/style2.css" media="screen" rel="stylesheet">
 </head>
 <body>
 <div id="region" align="center">
@@ -125,7 +125,7 @@ function timeControl($result)
 }
 
 
-    echo "</div><form action='index2.php'>
+    echo "</div><form action='table.php'>
     <input class='button1' type='submit' value='Вернуться на главную страницу'>
     </form>";
 ?>

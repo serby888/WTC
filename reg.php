@@ -1,7 +1,7 @@
 <html>
 <head>
 <title>Регистрация</title>
-<link href="style.css" media="screen" rel="stylesheet">
+<link href="css/style.css" media="screen" rel="stylesheet">
 </head>
 <body>
 <div class="container mlogin">

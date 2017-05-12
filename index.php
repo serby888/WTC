@@ -11,7 +11,7 @@ session_start();
 <html>
 <head>
 <title>Вход в учетную запись</title>
-<link href="style.css" media="screen" rel="stylesheet">
+<link href="css/style.css" media="screen" rel="stylesheet">
 </head>
 <body>
 

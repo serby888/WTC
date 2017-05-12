@@ -1,9 +1,11 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
     <title>Результат поиска</title>
-    <link href="style.css" media="screen" rel="stylesheet">
+    <link href="css/style.css" media="screen" rel="stylesheet">
 </head>
 <body>
 
@@ -34,13 +36,13 @@ if(isset($_POST['submit']))
         
         if ($rows == 0) 
         { 
-            header("location: index2.php?markSearch=2");
+            header("location: table.php?markSearch=2");
         exit; 
         }
       } 
       else
       { 
-        header("location: index2.php?markSearch=1");
+        header("location: table.php?markSearch=1");
         exit; 
       } 
     } 
@@ -68,7 +70,7 @@ function table($result)
                 for ($j = 1 ; $j < 4 ; ++$j) echo "<td>$row[$j]</td>"; 
                     echo "<td><a href='view.php?id=".$row[0]."'style='color:#9F693E; text-decoration: none;'>Просмотр</a></td>"; 
                     echo "<td><a href='edit.php?edd=".$row[0]."'style='color:#9F693E; text-decoration: none;'>Редактировать</a></td>";
-                    echo "<td><a href='index2.php?del=".$row[0]."' style='text-decoration: none;'><font size='5' color='#A11410'>&#10006;</font></a></td>";
+                    echo "<td><a href='table.php?del=".$row[0]."' style='text-decoration: none;'><font size='5' color='#A11410'>&#10006;</font></a></td>";
             echo "</tr>";
         } 
     echo "</table>";      
@@ -79,7 +81,7 @@ function table($result)
 }
 ?>
 <br>
-    <form action='index2.php'>
+    <form action='table.php'>
         <input class='button' type='submit' value='Вернуться на главную страницу'>
     </form>
 </body>

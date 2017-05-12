@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title> Редактирование записи</title>
-<link href="styleAdd.css" media="screen" rel="stylesheet">
+<link href="css/styleAdd.css" media="screen" rel="stylesheet">
 <script src="jquery.js" type="text/javascript"></script>
 <script src="jquery.maskedinput.js" type="text/javascript"></script>
 </head>
@@ -42,7 +42,7 @@ if(isset($_POST['fio_edd']) AND isset($_POST['number_edd']) AND isset($_POST['ma
 
     $query2= "UPDATE table_user SET FIO='$_POST[fio_edd]', Phone_number='$_POST[number_edd]', MAC='$_POST[mac_edd]' WHERE ID='$_POST[id_edd]'";
     mysqli_query($link, $query2) or die("Ошибка " . mysqli_error($link));
-    header("location: index2.php");
+    header("location: table.php");
     exit;
 }
 ?>
