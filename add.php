@@ -44,7 +44,7 @@ if(!empty($_POST['fio_add']) AND !empty($_POST['number_add']) AND !empty($_POST[
         echo "<div id='parent_popup'>
                     <div id='popup'>
                         <form action = 'add.php'>
-                        <p> <input class='button' type='submit' value='Закрыть'></p>
+                        <p> <input class='button' type='submit' style='float: right' value='Закрыть'></p>
                         <p>ФИО введено не корректно</p>
                 </form>
             </div>
@@ -68,7 +68,7 @@ if(!empty($_POST['fio_add']) AND !empty($_POST['number_add']) AND !empty($_POST[
                 echo "<div id='parent_popup'>
                     <div id='popup'>
                         <form action = 'add.php'>
-                        <p> <input class='button' type='submit' value='Закрыть'></p>
+                        <p> <input class='button' type='submit' style='float: right' value='Закрыть'></p>
                         <p>MAC-адрес введен не корректно</p>
                 </form>
             </div>
