@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title> Добавление записи</title>
 <link href="css/styleAdd.css" media="screen" rel="stylesheet">
 <script src="jquery.js" type="text/javascript"></script>
