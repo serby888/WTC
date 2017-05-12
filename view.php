@@ -66,10 +66,9 @@ if (!empty($_POST['date']) AND !empty($_POST['date2'])) {
 if (isset($_GET['id']) AND empty($_POST['date']) AND empty($_POST['date2']))
 {
 
-    $yesterday  = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d")-1, date("Y")));  
-    $tomorrow  = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d")+1, date("Y"))); 
-
-    $queryTime = "SELECT xTime FROM table_time WHERE ID_phone = '$_GET[id]' AND (xTime >= '$yesterday') AND (xTime <= '$tomorrow')" ;
+    $yesterday  = date("Y-m-d H:i:s", mktime(date("H")+1, date("i"), date("s") , date("m"), date("d")-1, date("Y")));  
+    $tomorrow  = date("Y-m-d H:i:s", mktime(date("H")+1, date("i"), date("s"), date("m"), date("d")+1, date("Y"))); 
+    $queryTime = "SELECT xTime FROM table_time WHERE ((ID_phone = '$_GET[id]') AND (xTime > '$yesterday') AND (xTime < '$tomorrow'))" ;
     $result = mysqli_query($link, $queryTime) or die("Ошибка " . mysqli_error($link)); 
     timeControl($result);
     
