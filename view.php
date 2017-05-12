@@ -67,10 +67,17 @@ if (isset($_GET['id']) AND empty($_POST['date']) AND empty($_POST['date2']))
 {
 
     $yesterday  = date("Y-m-d H:i:s", mktime(date("H")+1, date("i"), date("s") , date("m"), date("d")-1, date("Y")));  
-    $tomorrow  = date("Y-m-d H:i:s", mktime(date("H")+1, date("i"), date("s"), date("m"), date("d")+1, date("Y"))); 
-    $queryTime = "SELECT xTime FROM table_time WHERE ((ID_phone = '$_GET[id]') AND (xTime > '$yesterday') AND (xTime < '$tomorrow'))" ;
-    $result = mysqli_query($link, $queryTime) or die("Ошибка " . mysqli_error($link)); 
-    timeControl($result);
+    $queryTime = "SELECT xTime FROM table_time WHERE ((ID_phone = '$_GET[id]') AND (xTime > '$yesterday'))" ;
+    $result = mysqli_query($link, $queryTime) or die("Ошибка " . mysqli_error($link));
+    $rows1 = mysqli_num_rows($result);
+    if($rows1 == 0) 
+    {
+        echo "Нет записей на сегодня";
+    }
+    else
+    {
+        timeControl($result);
+    }
     
 }
 
