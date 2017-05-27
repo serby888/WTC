@@ -17,7 +17,7 @@ require_once 'connection.php'; // подключаем скрипт
 $link = mysqli_connect($host, $user, $password, $database) 
     or die("Ошибка " . mysqli_error($link)); 
      
-$query ="SELECT * FROM table_user ORDER BY FIO ASC";
+$query ="SELECT * FROM table_user WHERE GID = '".$_SESSION['id']."' ORDER BY FIO ASC";
  
 
     $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 

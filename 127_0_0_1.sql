@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 06 2017 г., 20:40
+-- Время создания: Май 27 2017 г., 12:50
 -- Версия сервера: 10.1.21-MariaDB
 -- Версия PHP: 5.6.30
 
@@ -28,10 +28,12 @@ USE `wtc`;
 -- Структура таблицы `table_time`
 --
 
-CREATE TABLE `table_time` (
-  `ID` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `table_time` (
+  `ID` int(5) NOT NULL AUTO_INCREMENT,
   `xTime` datetime(6) NOT NULL,
-  `ID_phone` int(5) NOT NULL
+  `ID_phone` int(5) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `ID_phone` (`ID_phone`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -40,11 +42,15 @@ CREATE TABLE `table_time` (
 -- Структура таблицы `table_user`
 --
 
-CREATE TABLE `table_user` (
-  `ID` int(5) NOT NULL,
+CREATE TABLE IF NOT EXISTS `table_user` (
+  `ID` int(5) NOT NULL AUTO_INCREMENT,
   `FIO` text COLLATE utf8_unicode_ci NOT NULL,
   `Phone_number` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `MAC` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+  `MAC` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `GID` int(5) NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `MAC` (`MAC`),
+  UNIQUE KEY `Мобильный` (`Phone_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -53,56 +59,13 @@ CREATE TABLE `table_user` (
 -- Структура таблицы `users`
 --
 
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `login` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(15) COLLATE utf8_unicode_ci NOT NULL
+  `password` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Индексы сохранённых таблиц
---
-
---
--- Индексы таблицы `table_time`
---
-ALTER TABLE `table_time`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `ID_phone` (`ID_phone`);
-
---
--- Индексы таблицы `table_user`
---
-ALTER TABLE `table_user`
-  ADD PRIMARY KEY (`ID`),
-  ADD UNIQUE KEY `MAC` (`MAC`),
-  ADD UNIQUE KEY `Мобильный` (`Phone_number`);
-
---
--- Индексы таблицы `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT для сохранённых таблиц
---
-
---
--- AUTO_INCREMENT для таблицы `table_time`
---
-ALTER TABLE `table_time`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `table_user`
---
-ALTER TABLE `table_user`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --

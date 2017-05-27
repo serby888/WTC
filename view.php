@@ -18,7 +18,7 @@ require_once 'connection.php'; // подключаем скрипт
 $link = mysqli_connect($host, $user, $password, $database) 
     or die("Ошибка " . mysqli_error($link)); 
      
-$query ="SELECT FIO, Phone_number, MAC FROM table_user WHERE ID = '$_GET[id]'";
+$query ="SELECT FIO, Phone_number, MAC FROM table_user WHERE ID = '$_GET[id]' AND GID = '".$_SESSION['id']."'";
  
 $result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
 if($result)

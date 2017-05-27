@@ -57,7 +57,7 @@ if(!empty($_POST['fio_add']) AND !empty($_POST['number_add']) AND !empty($_POST[
             $mac = strtolower($mac);
             if (filter_var($mac, FILTER_VALIDATE_MAC))
             {
-                $query2= "INSERT INTO table_user (FIO, Phone_number, MAC) VALUES('$name', '$number', '$mac')";
+                $query2= "INSERT INTO table_user (FIO, Phone_number, MAC, GID) VALUES('$name', '$number', '$mac', '".$_SESSION['id']."')";
                 mysqli_query($link, $query2) or die("Ошибка " . mysqli_error($link));
                 header("location: table.php");
                 exit;

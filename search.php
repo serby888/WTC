@@ -27,7 +27,11 @@ if(isset($_POST['submit']))
       { 
 
         $name=$_POST['query']; 
-        $sql="SELECT  * FROM table_user WHERE FIO LIKE '%" . $name .  "%'"; 
+              $sql="SELECT  * FROM table_user WHERE GID = '".$_SESSION['id']."'
+              AND (FIO LIKE '%$name%' 
+              OR Phone_number LIKE '%$name%'
+              OR MAC LIKE '%$name%')"; 
+
         $result1 = mysqli_query($link, $sql) or die("Ошибка " . mysqli_error($link));
         $rows = mysqli_num_rows($result1); 
         table($result1);
