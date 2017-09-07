@@ -4,15 +4,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Таблица работников</title>
 <link href="css/style.css" media="screen" rel="stylesheet">
-
 </head>
 <body>
 
 <?php
 session_start();
 require_once 'connection.php'; // подключаем скрипт
-
-
 
 $link = mysqli_connect($host, $user, $password, $database) 
     or die("Ошибка " . mysqli_error($link)); 
@@ -29,7 +26,7 @@ function table($result)
     if($result)
     {
         $rows = mysqli_num_rows($result); // количество полученных строк
-         echo '<table align= "left"  style=" text-align:center;" bgcolor="#ffffff">
+         echo '<table align= "center"  style=" text-align:center;" bgcolor="#ffffff">
                      <col width="300">
                      <col width="200">
                      <col width="200">

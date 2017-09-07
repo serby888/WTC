@@ -5,11 +5,18 @@
 <link href="css/style.css" media="screen" rel="stylesheet">
 </head>
 <body>
-<div class="container mlogin">
+<div class="container1 mlogin">
 <div id="login">
 <h1>Регистрация</h1>
 <form action="save_user.php" method="post">
 <!--**** save_user.php - это адрес обработчика.  То есть, после нажатия на кнопку "Зарегистрироваться", данные из полей  отправятся на страничку save_user.php методом "post" ***** -->
+
+<p>
+    <label>Ваш ID:<br></label>
+    <input class="input" name="id" type="text" size="15" maxlength="15" placeholder="Спросите ID y своего провайдера">
+  </p>
+<!--**** В текстовое поле (name="id" type="text") пользователь вводит id уточненный у провайдера ***** --> 
+
   <p>
     <label>Ваш логин:<br></label>
     <input class="input" name="login" type="text" size="15" maxlength="15">
@@ -22,7 +29,7 @@
 <!--**** В поле для паролей (name="password" type="password") пользователь вводит свой пароль ***** --> 
 <p>
 <input class="button" type="submit" name="submit" value="Зарегистрироваться">
-<!--**** Кнопочка (type="submit") отправляет данные на страничку save_user.php ***** --> 
+<!--**** Кнопка (type="submit") отправляет данные на страничку save_user.php ***** --> 
 </p></form>
 </div></div>
 <?php
@@ -62,6 +69,17 @@ if(isset($_GET['error']) && $_GET['error'] == 3)
 	          </div>";
 }
 
+if(isset($_GET['error']) && $_GET['error'] == 4)
+{
+	echo "<div id='parent_popup'>
+	            <div id='popup'>
+	                <form action = 'reg.php'>
+	                <p> <input class='button' type='submit' value='Закрыть'></p>
+	                <p>Данный ID зарегистрирован в системе, уточните его у провайдера</p>
+	                </form>
+	            </div>
+	          </div>";
+}
 ?>
 
 </body>

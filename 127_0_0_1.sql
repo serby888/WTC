@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 27 2017 г., 12:50
+-- Время создания: Сен 07 2017 г., 14:20
 -- Версия сервера: 10.1.21-MariaDB
 -- Версия PHP: 5.6.30
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `table_user` (
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `login` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)

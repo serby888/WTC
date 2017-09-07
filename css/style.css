@@ -81,7 +81,6 @@ td {
     box-shadow: 0 1px 3px rgba(0,0,0,.13);
 }
 
-
 .container h1 {
     color: #777;
     text-align: center;
@@ -103,6 +102,48 @@ td {
 .container label {
     color: #777;
     font-size: 17px;
+}
+
+.container1 {
+    padding: 25px 16px 25px 10px;
+    font-weight: 400;
+    overflow: hidden;
+    width: 400px;
+    height: 350px;
+    background: #fff;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,.13);
+    box-shadow: 0 1px 3px rgba(0,0,0,.13);
+}
+
+.container1 h1 {
+    color: #777;
+    text-align: center;
+    font-weight: 300;   
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.container1 label {
+    color: #777;
+    font-size: 17px;   
+}
+.container1 form .input,.container input[type=text],.container input[type=password],.container input[type=e] {
+    background: #fbfbfb;
+    font-family: 'Century Gothic', sans-serif;
+    font-size: 18px;
+    line-height: 1.45;
+    width: 100%;
+    padding: 3px;
+    margin: 0 6px 5px 0;
+    outline: none;
+    border: 1px solid #d9d9d9;
+}
+
+.container1 form .input:focus {
+    border: 1px solid #f58220;
+    -webkit-box-shadow: 0 0 3px 0 rgba(245,130,32,0.75);
+    -moz-box-shadow: 0 0 3px 0 rgba(245,130,32,0.75);
+    box-shadow: 0 0 3px 0 rgba(245,130,32,0.75);
 }
 
 #login {
