@@ -8,7 +8,8 @@
 <body>
 
 <?php
-session_start();
+session_start(['cookie_lifetime' => 86400,]);
+
 require_once 'connection.php'; // подключаем скрипт
 
 $link = mysqli_connect($host, $user, $password, $database) 
