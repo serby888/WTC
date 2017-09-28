@@ -19,13 +19,21 @@ jQuery(function($){
 <?php
 session_start();
 require_once 'connection.php'; // подключаем скрипт 
+
+if(!isset($_GET['fio_add']) AND !isset($_GET['number_add']) AND !isset($_GET['mac_add']))
+{
+    $_GET['fio_add'] = NULL;
+    $_GET['number_add'] = NULL;
+    $_GET['mac_add'] = NULL;
+}
+
    echo "
             <h2>Добавление записи</h2>
             <form action='add.php' method='post' name='form_add'>
                 <input type='hidden' name='id_add' >Введите ФИО:<br>
-                <input class='input' type='text' size='20' placeholder='Фамилия Имя Отчество' name='fio_add' ><br><br>Введите телефонный номер:<br>
-                <input class='input' type='text' size='15' id='phone' name='number_add' placeholder='+375 (__) ___-__-__' ><br><br>Введите MAC-адрес:<br>
-                <input class='input' type='text' size='15' id='mac' placeholder='__:__:__:__:__:__' name='mac_add' ><br><br>
+                <input class='input' type='text' size='20' placeholder='Фамилия Имя Отчество' name='fio_add' value='".$_GET['fio_add']."' ><br><br>Введите телефонный номер:<br>
+                <input class='input' type='text' size='15' id='phone' name='number_add' placeholder='+375 (__) ___-__-__' value='".$_GET['number_add']."' ><br><br>Введите MAC-адрес:<br>
+                <input class='input' type='text' size='15' id='mac' placeholder='__:__:__:__:__:__' name='mac_add' value='".$_GET['mac_add']."' ><br><br>
                 <input class='button' type='submit' value='Добавить'>
             </form>
             ";
@@ -38,12 +46,16 @@ if(!empty($_POST['fio_add']) AND !empty($_POST['number_add']) AND !empty($_POST[
 
     $name = htmlentities(mysqli_real_escape_string($link, $_POST['fio_add']));
     $name = mb_convert_case($name, MB_CASE_TITLE, "UTF-8"); 
+    $number = htmlentities(mysqli_real_escape_string($link, $_POST['number_add']));
 
-    if(preg_match('~[^а-яА-ЯёЁ ]~u', $name)) {
+    $mac = htmlentities(mysqli_real_escape_string($link, $_POST['mac_add']));
+    $mac = strtolower($mac);
+
+if(preg_match('~[^а-яА-ЯёЁ\. ]~u', $name)) {
  
         echo "<div id='parent_popup'>
                     <div id='popup'>
-                        <form action = 'add.php'>
+                        <form action = 'add.php?fio_add=".$name."&number_add=".$number."&mac_add=".$mac."' method = 'post'>
                         <p> <input class='button' type='submit' style='float: right' value='Закрыть'></p>
                         <p>ФИО введено не корректно</p>
                 </form>
@@ -67,7 +79,7 @@ if(!empty($_POST['fio_add']) AND !empty($_POST['number_add']) AND !empty($_POST[
             {
                 echo "<div id='parent_popup'>
                     <div id='popup'>
-                        <form action = 'add.php'>
+                        <form action = 'add.php?fio_add=".$name."&number_add=".$number."&mac_add=".$mac."' method = 'post'>
                         <p> <input class='button' type='submit' style='float: right' value='Закрыть'></p>
                         <p>MAC-адрес введен не корректно</p>
                 </form>
