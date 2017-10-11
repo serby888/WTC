@@ -87,8 +87,8 @@ function timeControl($result)
     if($result)
     {
         $rows = mysqli_num_rows($result); // количество полученных строк
-        echo '<br><table align= "center" border="1" cellpadding="5" style="border-collapse: collapse; text-align:center;" bgcolor="#f5f5f5"><tr><th>Время</th></tr>
-        <col width="199">';
+        echo '<br><table rules="groups" align= "center" border="1" cellpadding="5" style="border-collapse: collapse; text-align:center;" bgcolor="#f5f5f5"><tr><th>Время</th></tr>
+        <col width="250">';
 
         $row = mysqli_fetch_row($result); 
         $timeFirst = $row[0];
@@ -108,10 +108,10 @@ function timeControl($result)
             if($date < $date1)  //echo date_format($date, 'Y-m-d H:i:s');
             {
                 echo "<tr>";
-                echo "<td><font color='red'>$timeFirst</font></td>"; 
+                echo "<td>$timeFirst</td><col>"; 
                 echo "</tr>";
                 echo "<tr>";
-                echo "<td><font color='red'>$row[0]</font></td>"; 
+                echo "<td>$row[0]</td>"; 
                 echo "</tr>";
                 $b = 0;
             }
